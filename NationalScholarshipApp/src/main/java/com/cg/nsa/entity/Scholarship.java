@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="scholarship10")
-public class Scholarship extends User
+public class Scholarship
 {
 	@Id
 	private int scholarshipId;

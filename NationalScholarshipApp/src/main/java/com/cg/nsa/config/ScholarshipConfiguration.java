@@ -27,11 +27,11 @@ public class ScholarshipConfiguration {
 	    }
 	 private ApiInfo metaData() {
    	  ApiInfo apiInfo = new ApiInfo(
-               "Officer",
-               "Officer details end points",
+               "Scholarship",
+               "Scholarship details end points",
                "1.0",
                "Terms of service",
-               new Contact("Sneha Todurkar", "", "todurkar.sneha@gmail.com"),
+               new Contact("Ankita Jha", "", "ankitajha815@gmail.com"),
               "Apache License Version 2.0",
                "https://www.apache.org/licenses/LICENSE-2.0");
        return apiInfo;
