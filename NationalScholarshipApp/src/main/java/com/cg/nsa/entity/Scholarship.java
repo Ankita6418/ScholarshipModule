@@ -4,6 +4,7 @@ import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -16,19 +17,32 @@ public class Scholarship
 {
 	@Id
 	@NotNull(message="scholarshipId should not be empty")
+	@Column(name = "scholarshipId")
 	private int scholarshipId;
 	@NotEmpty(message="scholarshipName should not be empty")
-	private String scholarshipName;		//Prime Minister Scholarship Scheme/SwarnaJayanti Fellowships Scheme, etc..
-	private String field;		// Medical, Law, Engineering
-	private String course;		// LLB, MBA, MBBS, BE, BTech, MTech, BCA
+	@Column(name = "scholarshipName")
+	private String scholarshipName;	//Prime Minister Scholarship Scheme/SwarnaJayanti Fellowships Scheme, etc..
+	@Column(name = "field")
+	private String field;
+	@Column(name = "course")// Medical, Law, Engineering
+	private String course; // LLB, MBA, MBBS, BE, BTech, MTech, BCA
+	@Column(name = "courseYear")
 	private int courseYear;		// Current course year
+	@Column(name = "sscScore")
 	private double sscScore;
+	@Column(name = "hscScore")
 	private double hscScore;
+	@Column(name = "familyIncome")
 	private double familyIncome;
+	@Column(name = "bankName")
 	private String bankName;
+	@Column(name = "bankIfsc")
 	private String bankIfsc;
+	@Column(name = "accountNo")
 	private String accountNo;
-	private String appStatus;		// Pending/Approved/Rejected
+	@Column(name = "appStatus")
+	private String appStatus; // Pending/Approved/Rejected
+	@Column(name = "approval")
 	private String approval;		// Pending/Granted
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "userId")
