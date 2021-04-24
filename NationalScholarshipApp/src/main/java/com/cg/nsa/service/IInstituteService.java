@@ -3,7 +3,7 @@ package com.cg.nsa.service;
 import java.util.List;
 
 import com.cg.nsa.entity.Institution;
-import com.cg.nsa.exception.InvalidInstitutionException;
+import com.cg.nsa.exception.InvalidScholarshipException;
 
 public interface IInstituteService {
 
@@ -13,7 +13,7 @@ public interface IInstituteService {
 	
 	Institution statusUpdate(Institution institute);
 	
-	Institution getInstitute(int code) throws InvalidInstitutionException;
+	Institution getInstitute(int code) throws InvalidScholarshipException;
 	
 	List<Institution> getAllInstitutes();
 	

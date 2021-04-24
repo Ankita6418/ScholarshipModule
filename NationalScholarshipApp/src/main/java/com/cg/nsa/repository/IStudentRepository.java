@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.cg.nsa.entity.Student;
-import com.cg.nsa.exception.InvalidInstitutionException;
+import com.cg.nsa.exception.InvalidScholarshipException;
 
 @Repository
 public interface IStudentRepository extends JpaRepository<Student, Integer>

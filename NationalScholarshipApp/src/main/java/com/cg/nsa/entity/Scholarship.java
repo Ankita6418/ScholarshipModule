@@ -1,7 +1,8 @@
 package com.cg.nsa.entity;
 
 import java.util.List;
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,7 +15,9 @@ import javax.persistence.Table;
 public class Scholarship
 {
 	@Id
+	@NotNull(message="scholarshipId should not be empty")
 	private int scholarshipId;
+	@NotEmpty(message="scholarshipName should not be empty")
 	private String scholarshipName;		//Prime Minister Scholarship Scheme/SwarnaJayanti Fellowships Scheme, etc..
 	private String field;		// Medical, Law, Engineering
 	private String course;		// LLB, MBA, MBBS, BE, BTech, MTech, BCA
