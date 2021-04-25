@@ -14,10 +14,18 @@ import org.springframework.stereotype.Service;
 
 import com.cg.nsa.entity.Scholarship;
 
+/**
+ * 
+ *@author Ankita Jha
+ *Version: 1.0
+ *Description: This is the service interface of Scholarship module.
+ *Created date: 22-04-2021
+ *
+ */
 @Service
 public interface IScholarshipService {
 
-	Scholarship statusUpdate(int scholarshipId,Scholarship scholarship);
+	public Scholarship addScholarshipDetails(Scholarship scholarship);
 
-	List<Scholarship> getAllScholarships();
+	public List<Scholarship> getAllScholarships();
 }

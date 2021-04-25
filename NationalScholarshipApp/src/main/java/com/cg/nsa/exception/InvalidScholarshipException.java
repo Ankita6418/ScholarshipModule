@@ -1,5 +1,14 @@
 package com.cg.nsa.exception;
 
+/**
+ * 
+ * @author Ankita Jha
+ * Version: 1.0
+ * Description this is a InvalidScholarshipException
+ * created date 22-04-2021
+ * 
+ */
+
 public class InvalidScholarshipException extends RuntimeException {
 	public InvalidScholarshipException() {
 		// TODO Auto-generated constructor stub

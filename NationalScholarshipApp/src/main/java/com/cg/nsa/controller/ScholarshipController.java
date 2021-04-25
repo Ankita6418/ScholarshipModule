@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.nsa.entity.Scholarship;
 import com.cg.nsa.exception.InvalidScholarshipException;
 import com.cg.nsa.exception.NotNullException;
+import com.cg.nsa.exception.UniqueElementException;
 import com.cg.nsa.exception.ValidationException;
 import com.cg.nsa.service.IScholarshipService;
 
@@ -30,7 +31,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api("Scholarship controller")
 @RestController
-@RequestMapping("/scholarship")
+@RequestMapping(value ="/scholarship")
 
 /***
  * 
@@ -44,9 +45,9 @@ import io.swagger.annotations.ApiOperation;
 public class ScholarshipController {
 	
 	@Autowired
-	IScholarshipService service;
+	IScholarshipService iScholarshipService;
 	
-	@ApiOperation(value="getAllScholarship")
+	@ApiOperation(value="getAllScholarships")
 	
 	/******************************************************************
 	 * 
@@ -56,33 +57,48 @@ public class ScholarshipController {
 	 * 
 	 ******************************************************************/
 	
-	@GetMapping("/getAllScholarshipss")
-	public List<Scholarship> getAllScholarship()
-	{
-		return service.getAllScholarships();
-	}
+	@GetMapping(value = "/getAllScholarships")
+	
+public List<Scholarship> getAllScholarship()
+{
+	return iScholarshipService.getAllScholarships();
+	
+}
 	
 	/***********************************************************************************
 	 * 
 	 * @param scholarshipId
 	 * @param scholarship
 	 * @return this method returns a new ResponseEntity with an appropriate response code
-	 * @throws this method throws InvalidScholarshipException
+	 * @throws this method throws ValidationException
+	 * @throws this method throws UniqueElementException
 	 * 
 	 **********************************************************************************/
 	
-	@ApiOperation("Update status")
-	@PutMapping("/statusUpdate/{scholarshipId}")
-	public ResponseEntity<Object> statusUpdate(@PathVariable int scholarshipId, @RequestBody Scholarship scholarship) throws NotNullException 
-	{
-		try {
+@ApiOperation("Add Scholarship Details")
+@PostMapping(value = "/addScholarshipDetails")
+public ResponseEntity<Object> addScholarshipDetails(@Valid @RequestBody Scholarship scholarship,BindingResult bindingResult){
+	if(bindingResult.hasErrors())
+	 {
+		List<FieldError> errors = bindingResult.getFieldErrors();
+		List<String> errorList = new ArrayList<String>();
+		for(FieldError error : errors)
+			{
+				errorList.add(error.getDefaultMessage());
+			}
+			throw new ValidationException(errorList);
+	 }
+	try
+	 {
+		iScholarshipService.addScholarshipDetails(scholarship);
+		return new ResponseEntity<Object>("Scholarship Details added successfully",HttpStatus.OK);
 			
-		      service.statusUpdate(scholarshipId, scholarship);
-		      return new ResponseEntity<Object>("Updated successfully", HttpStatus.OK);
+	 }
+	catch(UniqueElementException exception)
+	{
+		throw new UniqueElementException("Entered scholarship Id already exists");
 	}
-		catch(NotNullException exception) {
-			throw new NotNullException("Entered scholarship id does not exist");
-		}
-	}
+ }
+	
 }
 
