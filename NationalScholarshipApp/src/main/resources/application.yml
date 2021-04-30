@@ -1,0 +1,10 @@
+spring:
+  activemq:
+    broker-url:
+    datasource:
+      password:sprint
+      url:jdbc:h2:dev
+      username:sprint
+    
+server:
+  port: 8034

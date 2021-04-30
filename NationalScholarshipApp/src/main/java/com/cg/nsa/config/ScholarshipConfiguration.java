@@ -13,6 +13,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 
+/**
+ * 
+ * @author Ankita Jha
+ * Version: 1.0
+ * Description: This is configuration class- Scholarship
+ * Created at: 19-04-2021
+ * 
+ */
 public class ScholarshipConfiguration {
 	 @Bean
 	    public Docket productApi() {
